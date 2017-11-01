@@ -2,6 +2,7 @@ const request = require('request')
 const bodyParser = require('body-parser')
 const express = require('express')
 const app = express()
+const utilityFunctions = require('./utility')
 
 app.use(express.static('./server/public/dist/'))
 app.use(bodyParser.json())
