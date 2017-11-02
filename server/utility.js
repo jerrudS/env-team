@@ -1,25 +1,21 @@
 function selectThree() {
-  let array = []
-  const number1 = Math.floor(Math.random() * 8) + 1
-  array.push(number1)
-  let number2 = Math.floor(Math.random() * 8) + 1
-  if(!array.includes(number2)) {
-    array.push(number2)
+  var arr = []
+  while(arr.length < 3){
+    var randomnumber = Math.ceil(Math.random()*8)
+    if(arr.indexOf(randomnumber) > -1) continue
+    arr[arr.length] = randomnumber
   }
-  else {
-    number2 = Math.floor(Math.random() * 8) + 1
-    array.push(number2)
-  }
-  let number3 = Math.floor(Math.random() * 8) + 1
-  if(!array.includes(number3)) {
-    array.push(number3)
-  }
-  else {
-    number3 = Math.floor(Math.random() * 8) + 1
-    array.push(number3)
-  }
-  console.log(array)
-  return array
+  return arr
 }
 
-selectThree()
+function filterForThree(arrayOfObjs) {
+  const array = selectThree()
+  const threeObjs = arrayOfObjs.map(item => {
+    if(array.includes(item.id)) {
+      return item
+    }
+  })
+  return threeObjs
+}
+
+module.exports = filterForThree
